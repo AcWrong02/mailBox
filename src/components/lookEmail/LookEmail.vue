@@ -3,6 +3,7 @@
     <IntroHeader />
   </div>
   <div class="mail-content">
+    <CountDown v-if="MessageType === 2"></CountDown>
     <ReadForm v-if="MessageType === 0" />
     <ReadForm
       friendLabel="学校名称"
@@ -17,6 +18,7 @@
     <ReadForm
       friendLabel="许愿暗号"
       placeholder="请输入许愿暗号"
+      buttonText="查看愿望"
       v-if="MessageType === 3"
     />
   </div>
@@ -28,6 +30,7 @@ import IntroHeader from "../header/IntroHeader.vue";
 import { useRouter, useRoute } from "vue-router";
 import ReadForm from "../readForm/ReadForm.vue";
 import FloatMenu from "../FloatMenu.vue";
+import CountDown from "../countDown/CountDown.vue";
 
 const router = useRouter();
 const route = useRoute();

@@ -12,7 +12,7 @@
           ></div>
         </van-cell-group>
         <div style="margin: 16px">
-          <van-button block native-type="submit"> 查看留言 </van-button>
+          <van-button block native-type="submit"> {{ buttonText }} </van-button>
         </div>
       </van-form>
     </div>
@@ -36,6 +36,10 @@
       type: String,
       default: "请填写好友名字或暗号",
     },
+    buttonText:{
+        type: String,
+        default: "查看留言"
+    }
   });
   
   const submitMessage = () => {

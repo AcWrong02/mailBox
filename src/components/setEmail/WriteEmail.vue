@@ -6,7 +6,7 @@
     <writeForm v-if="MessageType === 0"/>
     <writeForm friendLabel="学校名称" placeholder="请输入学校名称" content-placeholder="请填写好班级、姓名和具体留言内容"  v-if="MessageType === 1"/>
     <writeForm friendLabel="学校名称" placeholder="请输入学校名称" content-placeholder="请填写好班级、姓名和具体留言内容" v-if="MessageType === 2"/>
-    <writeForm friendLabel="许愿暗号" placeholder="请输入许愿暗号" content-placeholder="请填写你的愿望" v-if="MessageType === 3"/>
+    <writeForm friendLabel="许愿暗号" placeholder="请输入许愿暗号" content-placeholder="请填写你的愿望" buttonText="许愿" isWish v-if="MessageType === 3"/>
   </div>
 </template>
 

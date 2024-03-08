@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
+    "dayjs": "^1.11.10",
     "postcss-pxtorem": "5.1.1",
     "vant": "^4.8.5",
     "vue": "^3.4.15",

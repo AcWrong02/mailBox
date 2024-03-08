@@ -5,7 +5,7 @@ const routes = [
   { path: "/selectWrite", component: ()=>import('@/components/setEmail/SelectType.vue') },
   { path: "/writeEmail/:type", component: ()=>import('@/components/setEmail/WriteEmail.vue') },
   { path: "/readEmail/:type", component: ()=>import('@/components/lookEmail/LookEmail.vue') },
-  { path: "/rules", component: ()=>import('@/components/lookEmail/LookEmail.vue') },
+  { path: "/rules", component: ()=>import('@/components/rules/MessageStandard.vue') },
 ];
 
 const router = createRouter({  

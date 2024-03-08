@@ -6,7 +6,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import "amfe-flexible";
-import { Form, Field, Button, Toast } from "vant";
+import { Form, Field, Button, Toast, CountDown } from "vant";
 
 function setRootRem() {
   const root = document.documentElement;
@@ -26,4 +26,5 @@ createApp(App)
   .use(Field)
   .use(Button)
   .use(Toast)
+  .use(CountDown)
   .mount("#app");

@@ -22,11 +22,11 @@
         />
       </van-cell-group>
       <div style="margin: 16px">
-        <van-button block native-type="submit"> 提交留言 </van-button>
+        <van-button block native-type="submit"> {{ buttonText }} </van-button>
       </div>
     </van-form>
     <div class="alert-message">
-      提交留言前请认真阅读<router-link to="/">《留言规范》</router-link>和<router-link to="/">《隐私政策》</router-link>
+      {{ isWish ? '许愿前' : '提交留言前' }}请认真阅读<router-link to="/rules">《{{ isWish ? '许愿' : '留言' }}规范》</router-link>
     </div>
   </div>
 </template>
@@ -57,6 +57,14 @@ const props = defineProps({
     type: String,
     default: "请填写留言内容",
   },
+  buttonText: {
+    type: String,
+    default: "提交留言",
+  },
+  isWish:{
+    type:Boolean,
+    default:false
+  }
 });
 
 const submitMessage = () => {
@@ -77,6 +85,11 @@ const submitMessage = () => {
 .form-container {
   width: 80%;
   background: #fff;
+}
+.alert-message{
+  color: rgba(128,128,128);
+  font-size: 12px;
+  margin: 16px;
 }
 ::v-deep(.van-button) {
   background-color: var(--theme-color);
