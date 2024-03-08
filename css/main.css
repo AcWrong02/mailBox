@@ -1,0 +1,9 @@
+:root:root{
+  --theme-color: #e89eca;
+  --van-field-label-color: var(--theme-color);
+}
+
+#app {
+  height: 100vh;
+  background: #f8f8f8;
+}
