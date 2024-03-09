@@ -6,6 +6,7 @@ const routes = [
   { path: "/writeEmail/:type", component: ()=>import('@/components/setEmail/WriteEmail.vue') },
   { path: "/readEmail/:type", component: ()=>import('@/components/lookEmail/LookEmail.vue') },
   { path: "/rules", component: ()=>import('@/components/rules/MessageStandard.vue') },
+  { path: "/verify", component: ()=>import('@/components/VerifyPass.vue') },
 ];
 
 const router = createRouter({  

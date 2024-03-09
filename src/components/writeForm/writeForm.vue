@@ -26,14 +26,15 @@
       </div>
     </van-form>
     <div class="alert-message">
-      {{ isWish ? '许愿前' : '提交留言前' }}请认真阅读<router-link to="/rules">《{{ isWish ? '许愿' : '留言' }}规范》</router-link>
+      {{ isWish ? "许愿前" : "提交留言前" }}请认真阅读<router-link to="/rules"
+        >《{{ isWish ? "许愿" : "留言" }}规范》</router-link
+      >
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { showToast } from "vant";
 
 // 暗号
 const friendName = ref("");
@@ -61,11 +62,13 @@ const props = defineProps({
     type: String,
     default: "提交留言",
   },
-  isWish:{
-    type:Boolean,
-    default:false
-  }
+  isWish: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+const emits = defineEmits(["submit"]);
 
 const submitMessage = () => {
   console.log("friendName", friendName);
@@ -77,7 +80,7 @@ const submitMessage = () => {
     showToast(props.contentPlaceholder);
     return;
   }
-  showToast("提交成功，审核通过即可显示");
+  emits("submit", { friendName: friendName.value, message: message.value });
 };
 </script>
 
@@ -86,8 +89,8 @@ const submitMessage = () => {
   width: 80%;
   background: #fff;
 }
-.alert-message{
-  color: rgba(128,128,128);
+.alert-message {
+  color: rgba(128, 128, 128);
   font-size: 12px;
   margin: 16px;
 }
