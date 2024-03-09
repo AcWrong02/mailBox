@@ -4,25 +4,33 @@
   </div>
   <div class="mail-content">
     <CountDown v-if="MessageType === 2"></CountDown>
-    <ReadForm v-if="MessageType === 0" />
+    <ReadForm v-if="MessageType === 0" @submit="handleGetList" />
     <ReadForm
       friendLabel="学校名称"
       placeholder="请输入学校名称"
       v-if="MessageType === 1"
+      @submit="handleGetList"
     />
     <ReadForm
       friendLabel="学校名称"
       placeholder="请输入学校名称"
       v-if="MessageType === 2"
+      @submit="handleGetList"
     />
     <ReadForm
       friendLabel="许愿暗号"
       placeholder="请输入许愿暗号"
       buttonText="查看愿望"
+      @submit="handleGetList"
       v-if="MessageType === 3"
     />
+    <ReadList
+      style="margin: 20px 0"
+      v-if="isSearch"
+      :messageList="messageList"
+    />
   </div>
-  <FloatMenu/>
+  <FloatMenu />
 </template>
 
 <script setup>
@@ -31,11 +39,33 @@ import { useRouter, useRoute } from "vue-router";
 import ReadForm from "../readForm/ReadForm.vue";
 import FloatMenu from "../FloatMenu.vue";
 import CountDown from "../countDown/CountDown.vue";
+import ReadList from "../readList/ReadList.vue";
+import { getMessage } from "../../api/index.js";
+import { ref } from "vue";
 
 const router = useRouter();
 const route = useRoute();
 
 const MessageType = parseInt(route.params.type);
+
+// 是否为查询状态
+const isSearch = ref(false);
+
+//留言列表
+const messageList = ref([]);
+
+const handleGetList = async (single) => {
+  const res = await getMessage({
+    condition: 0,
+    arg1: 0,
+    arg2: single,
+  });
+  isSearch.value = true;
+  console.log(res);
+  if (res.data.code == 200) {
+    messageList.value = res.data.data;
+  }
+};
 </script>
 
 <style scoped>
@@ -47,7 +77,6 @@ const MessageType = parseInt(route.params.type);
   justify-content: center;
 }
 .mail-content {
-  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -49,7 +49,7 @@ const handleCouple = async (params) => {
     showToast("提交成功 审核通过后即可查看留言");
     const messageId = res.data.messageId;
     approveMessage({
-        messageId,,
+        messageId,
         messageStatus: 1,
     })
     console.log("MessageId: ", messageId);

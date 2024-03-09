@@ -34,7 +34,17 @@ export const approveMessage = (data) => {
 };
 
 // 查询留言
-export const getMessage = (params) => {};
+export const getMessage = (params) => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${BASE_URL}/message/queryAll`, {
+        params: params,
+      })
+      .then((res) => {
+        resolve(res);
+      });
+  });
+};
 
 // 删除留言
 export const deleteMessage = (params) => {};
