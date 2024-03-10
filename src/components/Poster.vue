@@ -1,9 +1,14 @@
 <template>
-  <canvas id="myCanvas"></canvas>
+  <div class="poster">
+    <div class="poster-message">保存图片发给好友👇👇👇</div>
+    <canvas id="myCanvas" style="display: none;"></canvas>
+  </div>
+  <img :src="imgSrc" alt="" style="width: 70%;"/>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import html2canvas from "html2canvas";
 
 const props = defineProps({
   type: String,
@@ -13,7 +18,10 @@ const props = defineProps({
 const width = 300;
 const height = 480;
 
+const imgSrc = ref("");
+
 onMounted(() => {
+  // const poster = document.querySelector(".poster");
   const canvas = document.getElementById("myCanvas"); // 使用id来寻找canvas元素
   const cxt = canvas.getContext("2d"); // 创建context对象
 
@@ -30,7 +38,7 @@ onMounted(() => {
   // 把图片绘制到myCanvas
   const img = new Image();
   img.crossOrigin = "anonymous";
-  img.src = "../../public/poster.png"; // 图片路径
+  img.src = "../../poster.png"; // 图片路径
   img.onload = () => {
     cxt.drawImage(img, 0, 0, width, height);
     // 绘制文字部分显示：
@@ -59,12 +67,12 @@ onMounted(() => {
       }
     }
 
-    const str2 = `留言类型： ${props.type}`
+    const str2 = `留言类型： ${props.type}`;
     let initHeight2 = height - 350; // 绘制字体距离canvas顶部初始的高度
     let lineWidth2 = 0;
     let lastSubStrIndex2 = 0;
     for (let i = 0; i < str2.length; i++) {
-        lineWidth2 += cxt.measureText(str2[i]).width;
+      lineWidth2 += cxt.measureText(str2[i]).width;
       if (lineWidth2 > txtlimitWidth) {
         cxt.fillText(str2.substring(lastSubStrIndex2, i), 20, initHeight2); // 绘制截取部分
         initHeight2 += 20; // 20为字体的高度
@@ -77,5 +85,16 @@ onMounted(() => {
       }
     }
   };
+  setTimeout(() => {
+    const base64 = canvas.toDataURL("image/png");
+    imgSrc.value = base64;
+  }, 1000);
 });
 </script>
+
+<style>
+.poster-message{
+  font-size: 15px;
+  padding: 5px;
+}
+</style>

@@ -29,7 +29,7 @@
       v-if="MessageType === 3"
     />
   </div>
-  <van-dialog v-model:show="show" title="留言成功" show-cancel-button>
+  <van-dialog v-model:show="show" title="留言成功" confirm-button-text="关闭" >
     <!-- <img src="../../../public/poster.png" style="width: 100%;height: 380px;"/> -->
     <Poster :type="messageTypeMap[MessageType]" :friendName="friendName"/>
   </van-dialog>

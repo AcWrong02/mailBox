@@ -3,53 +3,34 @@
     <IntroHeader />
   </div>
   <div class="container">
-    <van-swipe
-      class="my-swipe"
-      :autoplay="3000"
-      :height="120"
-      indicator-color="white"
-    >
-      <van-swipe-item @click="handleLookOne">
-        <img
-          src="../../public/first.jpg"
-          alt=""
-          style="width: 100%; height: 100%"
-        />
-        <div
-          style="
-            position: absolute;
-            top: 25%;
-            padding: 5px;
-            font-size: 15px;
-            color: #000;
-          "
+    <div class="swipe">
+      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+        <van-swipe-item @click="handleLookOne">
+          <img
+            src="../assets/first.jpg"
+            alt=""
+            style="width: 100%; height: 100%"
+          />
+          <div class="swipe-img-title">
+            “一眼就让人惊艳的个签短句 公主请抄！”
+          </div>
+        </van-swipe-item>
+        <van-swipe-item @click="handleLookTwo"
+          ><img
+            src="../assets/头像.jpg"
+            alt=""
+            style="width: 100%; height: 100%"
+          />
+          <div class="swipe-img-title">
+            “赞爆你朋友圈的浪漫短句文案”
+          </div></van-swipe-item
         >
-          “一眼就让人惊艳的个签短句 公主请抄！”
-        </div>
-      </van-swipe-item>
-      <van-swipe-item
-        ><img
-          src="../../public/头像.jpg"
-          alt=""
-          style="width: 100%; height: 100%"
-        />
-        <div
-          style="
-            position: absolute;
-            top: 25%;
-            padding: 5px;
-            font-size: 15px;
-            color: #000;
-          "
-        >
-          “一眼就让人惊艳的个签短句 公主请抄！”
-        </div></van-swipe-item
-      >
-      <!-- <van-swipe-item>3</van-swipe-item> -->
-      <template #indicator="{ active, total }">
-        <div class="custom-indicator">{{ active + 1 }}/{{ total }}</div>
-      </template>
-    </van-swipe>
+        <!-- <van-swipe-item>3</van-swipe-item> -->
+        <template #indicator="{ active, total }">
+          <div class="custom-indicator">{{ active + 1 }}/{{ total }}</div>
+        </template>
+      </van-swipe>
+    </div>
     <div class="mail-content">
       <div class="button-content">
         <button class="button" @click="handleLook">
@@ -309,7 +290,7 @@ const handleLookOne = () => {
 };
 
 const handleLookTwo = () => {
-  window.location.href = "https://mp.weixin.qq.com/s/MSaCyAnRKkLa-W-FNtGUCQ";
+  window.location.href = "https://mp.weixin.qq.com/s/CqHwj9nlLAye43Ehvjee6w";
 };
 </script>
 
@@ -358,6 +339,21 @@ const handleLookTwo = () => {
 }
 .container {
   height: 80%;
+}
+.swipe {
+  display: flex;
+  justify-content: center;
+}
+.swipe-img-title {
+  position: absolute;
+  top: 25%;
+  padding: 5px;
+  font-size: 15px;
+  color: #000;
+}
+.my-swipe {
+  height: 150px;
+  width: 90%;
 }
 ::v-deep(.my-swipe .van-swipe-item) {
   color: #fff;
