@@ -6,14 +6,14 @@
     <CountDown v-if="MessageType === 2"></CountDown>
     <ReadForm v-if="MessageType === 0" @submit="handleGetList" />
     <ReadForm
-      friendLabel="学校名称"
-      placeholder="请输入学校名称"
+      friendLabel="留言暗号"
+      placeholder="请输入暗号或学校名称"
       v-if="MessageType === 1"
       @submit="handleGetList"
     />
     <ReadForm
-      friendLabel="学校名称"
-      placeholder="请输入学校名称"
+      friendLabel="留言暗号"
+      placeholder="请输入暗号或学校名称"
       v-if="MessageType === 2"
       @submit="handleGetList"
     />
@@ -57,7 +57,7 @@ const messageList = ref([]);
 const handleGetList = async (single) => {
   const res = await getMessage({
     condition: 0,
-    arg1: 0,
+    arg1: MessageType,
     arg2: single,
   });
   isSearch.value = true;

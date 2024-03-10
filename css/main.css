@@ -4,6 +4,13 @@
 }
 
 #app {
+  height: 100vh;
+  overflow: scroll;
   background: #f8f8f8;
-  margin: 0;
+}
+
+.van-dialog__content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -15,6 +15,7 @@ import {
   Swipe,
   SwipeItem,
   List,
+  Dialog,
 } from "vant";
 
 function setRootRem() {
@@ -39,4 +40,5 @@ createApp(App)
   .use(Swipe)
   .use(SwipeItem)
   .use(List)
+  .use(Dialog)
   .mount("#app");

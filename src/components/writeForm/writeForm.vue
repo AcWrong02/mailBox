@@ -81,6 +81,8 @@ const submitMessage = () => {
     return;
   }
   emits("submit", { friendName: friendName.value, message: message.value });
+  friendName.value = "";
+  message.value = "";
 };
 </script>
 
